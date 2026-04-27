@@ -220,7 +220,15 @@ st.markdown(
     """
     <div class="hero-title-box">
         <div class="main-title">LexCalx</div>
-        <div class="subtitle">Cálculos jurídicos</div>
+        <div class="subtitle">
+            Cálculos jurídicos
+            <span class="subtitle-helper">?</span>
+            <span class="subtitle-tooltip">
+                LEXCALX realiza análise de decisões judiciais líquidáveis ou passíveis de cálculos.<br>
+                Para maior precisão, preencha assertivamente o máximo possível de campos de data.<br>
+                Me envia o arquivo da decisão em pdf nativo ou cole no campo final o texto da decisão.
+            </span>
+        </div>
     </div>
     """,
     unsafe_allow_html=True,
@@ -290,7 +298,7 @@ with col3:
 st.divider()
 
 arquivo_pdf = st.file_uploader(
-    "Vincular arquivo PDF da decisão:",
+    "Me envia o arquivo PDF da decisão:",
     type=["pdf"],
 )
 
