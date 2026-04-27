@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Tektur:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap');
 html,
 body,
 .stApp {
@@ -67,7 +68,7 @@ section.main {
 }
 
 .main-title {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamon", serif;
     font-size: 120px;
     font-weight: 900;
     line-height: 1.05;
@@ -77,8 +78,8 @@ section.main {
 }
 
 .subtitle {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
+    font-family: "Tektur", sans-serif;
+    font-size: 24px;
     color: #2F5268;
     margin-top: 8px;
     font-weight: 600;
@@ -87,13 +88,13 @@ section.main {
 }
 
 label,
-.stMarkdown,
 .stTextInput label,
 .stDateInput label,
 .stTextArea label,
 .stFileUploader label {
     color: #000000 !important;
     font-weight: 1500 !important;
+    font-size: 18px !important;
 }
 
 div[data-baseweb="input"] > div,
@@ -144,4 +145,72 @@ hr {
 h2,
 h3 {
     color: #1F3A4D !important;
+}
+
+/* ===== TAMANHO DOS NOMES DOS CAMPOS ===== */
+[data-testid="stWidgetLabel"],
+[data-testid="stWidgetLabel"] *,
+label[data-testid="stWidgetLabel"],
+label[data-testid="stWidgetLabel"] *,
+.stTextInput label,
+.stTextInput label *,
+.stDateInput label,
+.stDateInput label *,
+.stTextArea label,
+.stTextArea label *,
+.stFileUploader label,
+.stFileUploader label * {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #1f1f1f !important;
+}
+
+/* ===== HELPER DO SUBTÍTULO ===== */
+.subtitle {
+    position: relative;
+    display: inline-block;
+}
+
+.subtitle-helper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background-color: #2F5268;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: help;
+    vertical-align: middle;
+    box-shadow: 0 3px 8px rgba(47, 82, 104, 0.25);
+}
+
+.subtitle-tooltip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 38px;
+    transform: translateX(-50%);
+    width: max-content;
+    min-width: 360px;
+    max-width: 1080px;
+    white-space: nowrap;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: rgba(31, 58, 77, 0.96);
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 8px 22px rgba(31, 58, 77, 0.28);
+}
+
+.subtitle:hover .subtitle-tooltip {
+    display: block;
 }
