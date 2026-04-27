@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+html,
+body,
+.stApp {
+    font-family: "Montserrat", sans-serif;
+}
+
+html,
+body,
+#root {
+    background-color: #D7E2EB !important;
+}
+
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"],
+section.main {
+    background-color: transparent !important;
+}
+
+.stApp {
+    background-color: #D7E2EB !important;
+    color: #1F2D3D;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.stApp::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/png;base64,{{LOGO_BG}}");
+    background-size: 1050px auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.18;
+    z-index: 0;
+    pointer-events: none;
+}
+
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"],
+.block-container {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+[data-testid="stHeader"] {
+    background: rgba(215, 226, 235, 0.70);
+}
+
+.block-container {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    max-width: 1180px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title-box {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 38px;
+    padding: 18px 0 10px 0;
+}
+
+.main-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #1F3A4D;
+    letter-spacing: 1.5px;
+    text-shadow: 0 3px 10px rgba(255, 255, 255, 0.70);
+}
+
+.subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: #2F5268;
+    margin-top: 8px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.65);
+}
+
+label,
+.stMarkdown,
+.stTextInput label,
+.stDateInput label,
+.stTextArea label,
+.stFileUploader label {
+    color: #000000 !important;
+    font-weight: 1500 !important;
+}
+
+div[data-baseweb="input"] > div,
+textarea,
+section[data-testid="stFileUploader"] {
+    background-color: rgba(255, 255, 255, 0.88) !important;
+    border-radius: 10px !important;
+    border: 1px solid #AFC0CC !important;
+}
+
+input,
+textarea {
+    color: #000000 !important;
+}
+
+.resultado-box {
+    border: 1px solid #AFC0CC;
+    border-radius: 14px;
+    padding: 18px;
+    background-color: rgba(255, 255, 255, 0.88);
+    margin-top: 10px;
+    color: #1F2D3D;
+    box-shadow: 0 8px 22px rgba(42, 64, 82, 0.10);
+}
+
+div.stButton > button {
+    width: 100%;
+    height: 50px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #2F5268, #6F8797);
+    border: 1px solid #2F5268;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(47, 82, 104, 0.25);
+}
+
+div.stButton > button:hover {
+    background: linear-gradient(135deg, #244355, #5F7888);
+    border: 1px solid #244355;
+    color: #FFFFFF;
+}
+
+hr {
+    border-color: #AFC0CC;
+}
+
+h2,
+h3 {
+    color: #1F3A4D !important;
+}
