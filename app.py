@@ -234,6 +234,45 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# =========================================================
+# LOGIN
+# =========================================================
+if "lexcalx_logado" not in st.session_state:
+    st.session_state.lexcalx_logado = False
+
+
+if not st.session_state.lexcalx_logado:
+    col_login_esq, col_login_centro, col_login_dir = st.columns([1.2, 1, 1.2])
+
+    with col_login_centro:
+        usuario = st.text_input(
+            "Login:",
+            key="login_usuario",
+        )
+
+        senha = st.text_input(
+            "Senha:",
+            type="password",
+            key="login_senha",
+        )
+
+        entrar = st.button(
+            "Entrar",
+            key="btn_entrar_login",
+        )
+
+        if entrar:
+            usuario_correto = st.secrets.get("LEXCALX_LOGIN", "admin")
+            senha_correta = st.secrets.get("LEXCALX_SENHA", "admin")
+
+            if usuario == usuario_correto and senha == senha_correta:
+                st.session_state.lexcalx_logado = True
+                st.rerun()
+            else:
+                st.error("Login ou senha inválidos.")
+
+    st.stop()
+    
 numero_processo = st.text_input("Número do processo:")
 
 col1, col2, col3 = st.columns(3)
