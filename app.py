@@ -1151,6 +1151,37 @@ def dialog_gcpj_obrigatorio():
     if st.button("OK", key="btn_ok_dialog_gcpj_obrigatorio"):
         st.rerun()
 
+def validar_usuario_apps_script(usuario, senha):
+    url = st.secrets.get("LEXCALX_HISTORICO_URL", "")
+    token = st.secrets.get("LEXCALX_HISTORICO_TOKEN", "")
+
+    if not url or not token:
+        st.error("Configuração do login não encontrada nos secrets.")
+        return False
+
+    payload = {
+        "acao": "validar_login",
+        "token": token,
+        "usuario": usuario,
+        "senha": senha,
+    }
+
+    try:
+        resposta = requests.post(url, json=payload, timeout=20)
+        resposta.raise_for_status()
+
+        retorno = resposta.json()
+
+        if not retorno.get("ok"):
+            st.error(f"Erro ao validar login: {retorno.get('erro', 'Erro desconhecido')}")
+            return False
+
+        return bool(retorno.get("autorizado"))
+
+    except Exception as erro:
+        st.error(f"Erro ao validar login: {erro}")
+        return False
+
 # =========================================================
 # INTERFACE
 # =========================================================
@@ -1202,12 +1233,9 @@ if not st.session_state.lexcalx_logado:
         )
 
         if entrar:
-            usuario_correto = st.secrets.get("LEXCALX_LOGIN", "admin")
-            senha_correta = st.secrets.get("LEXCALX_SENHA", "admin")
-
-            if usuario == usuario_correto and senha == senha_correta:
+            if validar_usuario_apps_script(usuario, senha):
                 st.session_state.lexcalx_logado = True
-                st.session_state.usuario_logado = usuario
+                st.session_state.usuario_logado = usuario.strip()
                 st.rerun()
             else:
                 st.error("Login ou senha inválidos.")
