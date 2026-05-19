@@ -1,4 +1,8 @@
 streamlit
 openai
-anthropic
 pypdf
+openpyxl
+reportlab
+gspread
+google-auth
+requests

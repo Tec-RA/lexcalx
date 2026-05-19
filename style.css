@@ -63,13 +63,13 @@ section.main {
 .hero-title-box {
     width: 100%;
     text-align: center;
-    margin-bottom: 38px;
+    margin-bottom: 8px;
     padding: 18px 0 10px 0;
 }
 
 .main-title {
     font-family: "Cormorant Garamon", serif;
-    font-size: 120px;
+    font-size: 100px;
     font-weight: 900;
     line-height: 1.05;
     color: #1F3A4D;
@@ -213,4 +213,53 @@ label[data-testid="stWidgetLabel"] *,
 
 .subtitle:hover .subtitle-tooltip {
     display: block;
+}
+
+.resumo-processo-box {
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid #AFC0CC;
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    color: #1F2D3D;
+    box-shadow: 0 8px 22px rgba(42, 64, 82, 0.10);
+}
+
+.resumo-processo-box h1,
+.resumo-processo-box h2,
+.resumo-processo-box h3 {
+    color: #1F3A4D !important;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+.resumo-processo-box p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.resumo-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 18px 0;
+    background-color: #FFFFFF;
+}
+
+.resumo-tabela th {
+    background-color: #D7E2EB;
+    color: #1F2D3D;
+    font-weight: 800;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #AFC0CC;
+    font-size: 14px;
+}
+
+.resumo-tabela td {
+    padding: 10px;
+    border: 1px solid #AFC0CC;
+    vertical-align: top;
+    font-size: 14px;
 }
