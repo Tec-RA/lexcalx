@@ -1426,9 +1426,10 @@ with col_config2:
 
 st.divider()
 
-arquivo_pdf = st.file_uploader(
-    "Me envia o arquivo PDF da decisão:",
+arquivos_pdf = st.file_uploader(
+    "Me envia o PDF NATIVO da decisão:(se o PDF for escaneado, imagem, ou tiver texto não extraível, o resultado vem vazio.)",
     type=["pdf"],
+    accept_multiple_files=True,
 )
 
 texto_colado = st.text_area(
@@ -1463,11 +1464,36 @@ if executar:
         dialog_gcpj_obrigatorio()
         st.stop()
 
-    texto_extraido_pdf = extrair_texto_pdf(arquivo_pdf)
-    texto_decisao = texto_extraido_pdf if texto_extraido_pdf else texto_colado.strip()
+    textos_pdfs = []
+
+    for idx, arquivo_pdf in enumerate(arquivos_pdf, start=1):
+        texto_extraido = extrair_texto_pdf(arquivo_pdf)
+
+        if texto_extraido:
+            textos_pdfs.append(
+                f"\n\n[INÍCIO DO PDF {idx} - {arquivo_pdf.name}]\n"
+                f"{texto_extraido}\n"
+                f"[FIM DO PDF {idx} - {arquivo_pdf.name}]\n"
+            )
+
+    texto_extraido_pdf = "\n\n".join(textos_pdfs).strip()
+
+    textos_decisao = []
+
+    if texto_extraido_pdf:
+        textos_decisao.append(texto_extraido_pdf)
+
+    if texto_colado.strip():
+        textos_decisao.append(
+            "\n\n[INÍCIO DO TEXTO COLADO PELO USUÁRIO]\n"
+            f"{texto_colado.strip()}\n"
+            "[FIM DO TEXTO COLADO PELO USUÁRIO]\n"
+        )
+
+    texto_decisao = "\n\n".join(textos_decisao).strip()
 
     if not texto_decisao:
-        st.warning("Vincule um PDF ou cole o texto da decisão antes de executar o cálculo.")
+        st.warning("Vincule ao menos um PDF ou cole o texto da decisão antes de executar o cálculo.")
         st.stop()
 
     danos_materiais_formatados = []
